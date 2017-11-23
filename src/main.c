@@ -17,7 +17,11 @@ int		main(void)
     return (-1);
   window->font = my_strdup("fonts/audims.ttf");
   if (login(window, &player) == -1)
+  {
+    sfree(&player.name);
+    free_window(window);
     return (-1);
+  }
   sfree(&player.name);
   free_window(window);
   return (0);

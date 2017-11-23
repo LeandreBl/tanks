@@ -15,6 +15,7 @@
 # include "colors.h"
 
 # include "struct.h"
+# include "errors.h"
 
 int	login(window_t *window, player_t *player);
 void	encrypt(void *datas, int size);
