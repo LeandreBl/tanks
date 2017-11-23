@@ -8,6 +8,14 @@
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
+typedef struct	save_pkt_s
+{
+  int		len;
+  char		*name;
+  int		size;
+  char		*passwd;
+}		save_pkt_t;
+
 typedef struct  player_s
 {
   int           len;
