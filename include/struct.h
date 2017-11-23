@@ -14,6 +14,7 @@ typedef struct	save_pkt_s
   char		*name;
   int		size;
   char		*passwd;
+  int		level;
 }		save_pkt_t;
 
 typedef struct  player_s
