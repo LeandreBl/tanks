@@ -22,6 +22,7 @@ SRCS		+= src/encrypt.c
 SRCS		+= src/login.c
 SRCS		+= src/add_event.c
 SRCS		+= src/login_events.c
+SRCS		+= src/init_login_sprites.c
 
 OBJ		= $(SRCS:.c=.o)
 

@@ -19,6 +19,7 @@
 int	login(window_t *window, player_t *player);
 void	encrypt(void *datas, int size);
 void	init_login_evt_t(evtptr_t tab[]);
+int	init_login_sprites(sprite_t ***sprites);
 
 /* login pollEvent fctions */
 int	login_add_char(window_t *window, sfEvent *event, void *data);
