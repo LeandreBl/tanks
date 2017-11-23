@@ -12,8 +12,6 @@ typedef struct	save_pkt_s
 {
   int		len;
   char		*name;
-  int		size;
-  char		*passwd;
   int		level;
 }		save_pkt_t;
 
