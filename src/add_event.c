@@ -17,4 +17,10 @@ void		init_login_evt_t(evtptr_t tab[])
 {
   add_evt(&tab[0], sfEvtTextEntered, login_add_char);
   add_evt(&tab[1], sfEvtClosed, login_evt_close);
+  add_evt(&tab[2], sfEvtKeyPressed, login_accept);
+}
+
+void		init_menu_evt_t(evtptr_t tab[])
+{
+  add_evt(&tab[0], sfEvtClosed, menu_evt_close);
 }

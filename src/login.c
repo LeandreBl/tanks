@@ -7,7 +7,7 @@
 
 #include "tanks.h"
 
-#define FCTIONS		(2)
+#define FCTIONS		(3)
 
 static void		log_poll_evt(window_t *window, player_t *player)
 {
@@ -36,14 +36,21 @@ static void		log_poll_evt(window_t *window, player_t *player)
 static void		display(window_t *window, player_t *player, sprite_t **sprites)
 {
   sfVector2f		pos;
-  char			*format;
+  sfColor		color;
 
-  sprites = sprites;
-  format = catalloc("Enter login : %s", player->name);
-  pos.x = (window->width - my_strlen(format) * 12) / 2;
-  pos.y = window->height / 2 - 12;
-  put_word(format, pos, window, sfBlack);
-  sfree(&format);
+  pos.x = 415;
+  pos.y = 377;
+  put_sprite(window, sprites[0], ORIGIN);
+  if (my_strlen(player->name) == 0)
+  {
+    color = RGBA(50, 50, 50, 150);
+    put_word("<enter name here>", pos, window, color);
+  }
+  else
+  {
+    color = sfBlack;
+    put_word(player->name, pos, window, color);
+  }
 }
 
 static void		init_players_values(player_t *player)

@@ -7,6 +7,19 @@
 
 #include "tanks.h"
 
+int		login_accept(window_t *window, sfEvent *event, void *data)
+{
+  player_t	*ptr;
+
+  ptr = (player_t *)data;
+  if (event->key.code == sfKeyReturn
+      && my_strlen(ptr->name) > 0)
+  {
+    return (game_menu(window, ptr));
+  }
+  return (0);
+}
+
 int		login_evt_close(window_t *window, sfEvent *event, void *data)
 {
   (void) event;

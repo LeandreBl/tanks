@@ -23,6 +23,13 @@ typedef struct  player_s
   int           socket;
 }               player_t;
 
+typedef struct	menu_misc_s
+{
+  sprite_t	**sprites;
+  sfbutton_t	**buttons;
+  player_t	*player;
+}		menu_t;
+
 typedef int (* evt_t)(window_t *window, sfEvent *event, void *data);
 
 typedef struct	evtptr_s
