@@ -22,9 +22,10 @@ SRCS		+= src/encrypt.c
 SRCS		+= src/login.c
 SRCS		+= src/add_event.c
 SRCS		+= src/login_events.c
-SRCS		+= src/init_login_sprites.c
+SRCS		+= src/init_sprites.c
 SRCS		+= src/game_menu.c
 SRCS		+= src/menu_events.c
+SRCS		+= src/menu_buttons.c
 
 OBJ		= $(SRCS:.c=.o)
 

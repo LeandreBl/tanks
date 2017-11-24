@@ -23,4 +23,7 @@ void		init_login_evt_t(evtptr_t tab[])
 void		init_menu_evt_t(evtptr_t tab[])
 {
   add_evt(&tab[0], sfEvtClosed, menu_evt_close);
+  add_evt(&tab[1], sfEvtMouseButtonPressed, buttons_events);
+  add_evt(&tab[2], sfEvtMouseMoved, menu_evt_move);
+  add_evt(&tab[3], sfEvtKeyPressed, menu_evt_escape);
 }

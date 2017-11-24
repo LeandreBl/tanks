@@ -8,7 +8,7 @@
 #include "csfml.h"
 
 sfbutton_t	*sfbutton_create(const char *name, sprite_t *sprite,
-				 const sfIntRect *hitbox,
+				 sfVector2f pos,
 				 int (*fction)(void *data))
 {
   sfbutton_t	*button;
@@ -18,20 +18,11 @@ sfbutton_t	*sfbutton_create(const char *name, sprite_t *sprite,
   if (button == NULL)
     return (NULL);
   button->name = my_strdup(name);
-  button->sprite = sprite;
-  if (hitbox == NULL && sprite != NULL)
-  {
-    size = sfTexture_getSize(sprite->texture);
-    button->pos = sfSprite_getPosition(sprite->sprite);
-    button->size.x = size.x;
-    button->size.y = size.y;
-  }
-  else
-  {
-    button->pos = xy_vectorf(hitbox->left, hitbox->top);
-    button->size = xy_vectorf(hitbox->width, hitbox->height);
-  }
   button->fction = fction;
+  button->pos = pos;
+  button->sprite = sprite;
+  size = sfTexture_getSize(sprite->texture);
+  button->size = xy_vectorf(size.x, size.y);
   sfSprite_setPosition(sprite->sprite, button->pos);
   return (button);
 }
@@ -46,9 +37,10 @@ int		sfbutton_ispressed(sfbutton_t *button, sfVector2i pos)
   return (0);
 }
 
-void		sfbutton_draw(window_t *window, sfbutton_t *button)
+void		sfbutton_draw(window_t *window, sfbutton_t *button, sfVector2f pos)
 {
   pos_mouse(window);
+  button->pos = pos;
   if (sfbutton_ispressed(button, window->mouse))
   {
     sfSprite_setColor(button->sprite->sprite, sfColor_fromRGB(100, 100, 100));
@@ -60,16 +52,17 @@ void		sfbutton_draw(window_t *window, sfbutton_t *button)
 }
 
 void		sfbutton_draw_name(window_t *window, sfbutton_t *button,
-				   sfColor color)
+				   sfVector2f rpos, sfColor color)
 {
   sfVector2f	pos;
   sfVector2f	size;
 
+  button->pos = rpos;
   size.x = my_strlen(button->name) * 12;
   size.y = (nb_of(button->name, '\n') + 1) * 24;
   pos.x = button->pos.x + (button->size.x - size.x) / 2;
   pos.y = button->pos.y + (button->size.y - size.y) / 2;
-  sfbutton_draw(window, button);
+  sfbutton_draw(window, button, rpos);
   put_word(button->name, pos, window, color);
 }
 

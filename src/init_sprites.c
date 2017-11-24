@@ -7,7 +7,8 @@
 
 #include "tanks.h"
 
-static int	add_each_sprite(sprite_t ***sprites, char **files)
+static int	add_each_sprite(sprite_t ***sprites, char **files,
+				const char *endwith)
 {
   char		*pathname;
   sprite_t	*new;
@@ -16,7 +17,7 @@ static int	add_each_sprite(sprite_t ***sprites, char **files)
   i = 0;
   while (files[i] != NULL)
   {
-    if (end_with(files[i], "-login.png") == 0)
+    if (end_with(files[i], endwith) == 0)
     {
       pathname = catalloc("sprites/%s", files[i]);
       new = create_sprite(pathname);
@@ -34,7 +35,7 @@ static int	add_each_sprite(sprite_t ***sprites, char **files)
   return (0);
 }
 
-int		init_login_sprites(sprite_t ***sprites)
+int		init_sprites(sprite_t ***sprites, const char *endwith)
 {
   char		**files;
 
@@ -46,7 +47,7 @@ int		init_login_sprites(sprite_t ***sprites)
     free_tab(&files);
     return (-1);
   }
-  add_each_sprite(sprites, files);
+  add_each_sprite(sprites, files, endwith);
   free_tab(&files);
   return (0);
 }

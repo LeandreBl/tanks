@@ -161,17 +161,19 @@ sprite_t	*create_sprite_rect(const char *pathname,
 double		distance(sfVector2f a, sfVector2f b);
 
 sfbutton_t	*sfbutton_create(const char *name, sprite_t *sprite,
-				 const sfIntRect *hitbox,
+				 sfVector2f pos,
 				 int (*fction)(void *data));
 int		sfbutton_ispressed(sfbutton_t *button, sfVector2i pos);
 
-void		sfbutton_draw(window_t *window, sfbutton_t *button);
+void		sfbutton_draw(window_t *window, sfbutton_t *button, sfVector2f pos);
 
 void            sfbutton_draw_name(window_t *window, sfbutton_t *button,
-				   sfColor color);
+				   sfVector2f pos, sfColor color);
 int		sfbutton_exec(sfbutton_t *button, sfVector2i pos, void *data);
 
 void		free_sfbutton(sfbutton_t *button);
+
+void		free_sfbuttons(sfbutton_t **buttons);
 
 #ifdef __cplusplus
 }

@@ -66,7 +66,7 @@ int			login(window_t *window, player_t *player)
   sprite_t		**sprites;
 
   init_players_values(player);
-  if (init_login_sprites(&sprites) == -1)
+  if (init_sprites(&sprites, "-login.png") == -1)
     return (-1);
   while (sfRenderWindow_isOpen(window->window))
   {

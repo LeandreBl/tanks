@@ -28,7 +28,14 @@ typedef struct	menu_misc_s
   sprite_t	**sprites;
   sfbutton_t	**buttons;
   player_t	*player;
+  uint8_t	leave;
 }		menu_t;
+
+typedef struct	game_s
+{
+  window_t	*window;
+  menu_t	*misc;
+}		game_t;
 
 typedef int (* evt_t)(window_t *window, sfEvent *event, void *data);
 

@@ -40,5 +40,7 @@ int		login_add_char(window_t *window, sfEvent *event, void *data)
   }
   if (event->text.unicode == '\b')
     shift_right(ptr->name, 1);
+  if (event->text.unicode == '\04' && my_strlen(ptr->name) == 0)
+    login_evt_close(window, event, data);
   return (0);
 }

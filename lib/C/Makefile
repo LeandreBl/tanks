@@ -5,13 +5,13 @@
 ## makefile
 ##
 
-USE_CSFML :=y
-
 NAME	= libmy.a
 
 CC	= gcc
 
 MAKE	= make -C
+
+USE_CSFML :=y
 
 SRCS	= libcatalloc.a
 SRCS	+= libdefault.a
