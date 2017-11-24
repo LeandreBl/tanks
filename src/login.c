@@ -11,15 +11,15 @@
 
 static void		log_poll_evt(window_t *window, player_t *player)
 {
-  static int		calls = 0;
+  static bool		calls = false;
   static evtptr_t	tab[FCTIONS];
   sfEvent		event;
   int			i;
 
-  if (calls == 0)
+  if (calls == false)
   {
     init_login_evt_t(tab);
-    calls = 1;
+    calls = true;
   }
   while (sfRenderWindow_pollEvent(window->window, &event))
   {

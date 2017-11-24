@@ -97,7 +97,7 @@ int			game_menu(window_t *window, player_t *player)
   if (init_menu(&misc, player) == -1)
     return (-1);
   while (sfRenderWindow_isOpen(window->window)
-    && !misc.leave)
+    && misc.leave == false)
   {
     window_clear(window);
     game_menu_poll_event(window, &misc);

@@ -26,6 +26,10 @@ SRCS		+= src/init_sprites.c
 SRCS		+= src/game_menu.c
 SRCS		+= src/menu_events.c
 SRCS		+= src/menu_buttons.c
+SRCS		+= src/solo.c
+SRCS		+= src/solo_event.c
+SRCS		+= src/load_maps.c
+SRCS		+= src/load_tank.c
 
 OBJ		= $(SRCS:.c=.o)
 

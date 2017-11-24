@@ -12,9 +12,7 @@ int		menu_button_solo(void *data)
   game_t	*ptr;
 
   ptr = (game_t *)data;
-  (void) ptr;
-  mprintf("Solo\n");
-  return (0);
+  return (solo(ptr));
 }
 
 int		menu_button_coop(void *data)
@@ -42,6 +40,6 @@ int		menu_button_back(void *data)
   game_t	*ptr;
 
   ptr = (game_t *)data;
-  ptr->misc->leave = 1;
+  ptr->misc->leave = true;
   return (0);
 }
