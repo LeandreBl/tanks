@@ -7,7 +7,7 @@
 
 #include "tanks.h"
 
-# define FCTIONS (2)
+# define FCTIONS (6)
 
 static void		free_maps(map_t **maps)
 {
@@ -60,16 +60,16 @@ static int		fill(solo_t *game, game_t *data, tank_t ***tanks)
   return (0);
 }
 
+
+
 int			solo(game_t *data)
 {
-  solo_t	game;
-  tank_t	**tanks;
+  solo_t		game;
+  tank_t		**tanks;
 
   if (fill(&game, data, &tanks) == -1)
-  {
-    mdprintf(2, MEM_ERROR);
     return (-1);
-  }
+  
   while (sfRenderWindow_isOpen(game.window->window)
 	 && game.leave == false)
   {

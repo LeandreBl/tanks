@@ -32,4 +32,8 @@ void		init_solo_evt_t(evtptr_t tab[])
 {
   add_evt(&tab[0], sfEvtClosed, solo_evt_close);
   add_evt(&tab[1], sfEvtKeyPressed, solo_evt_leave);
+  add_evt(&tab[2], sfEvtKeyPressed, solo_move_up);
+  add_evt(&tab[3], sfEvtKeyPressed, solo_move_down);
+  add_evt(&tab[4], sfEvtKeyPressed, solo_move_left);
+  add_evt(&tab[5], sfEvtKeyPressed, solo_move_right);
 }

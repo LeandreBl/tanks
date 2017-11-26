@@ -28,6 +28,7 @@ SRCS		+= src/menu_events.c
 SRCS		+= src/menu_buttons.c
 SRCS		+= src/solo.c
 SRCS		+= src/solo_event.c
+SRCS		+= src/solo_moves.c
 SRCS		+= src/load_maps.c
 SRCS		+= src/load_tank.c
 

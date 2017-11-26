@@ -56,6 +56,9 @@ int	menu_button_back(void *data);
 /* solo pollEvent fctions */
 int	solo_evt_close(window_t *window, sfEvent *event, void *data);
 int	solo_evt_leave(window_t *window, sfEvent *event, void *data);
-
+int	solo_move_up(window_t *window, sfEvent *event, void *data);
+int	solo_move_down(window_t *window, sfEvent *event, void *data);
+int	solo_move_left(window_t *window, sfEvent *event, void *data);
+int	solo_move_right(window_t *window, sfEvent *event, void *data);
 
 #endif /* !TANKS_H_ */
