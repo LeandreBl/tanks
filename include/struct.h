@@ -71,12 +71,4 @@ typedef struct	solo_s
   bool		leave;
 }		solo_t;
 
-typedef int (* evt_t)(window_t *window, sfEvent *event, void *data);
-
-typedef struct	evtptr_s
-{
-  sfEventType	type;
-  evt_t		fction;
-}		evtptr_t;
-
 #endif /* !STRUCT_H_ */
