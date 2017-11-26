@@ -9,31 +9,6 @@
 
 #define FCTIONS		(4)
 
-static int		game_menu_poll_event(window_t *window, menu_t *misc)
-{
-  static int		calls = 0;
-  static evtptr_t	tab[FCTIONS];
-  sfEvent		event;
-  int			i;
-
-  if (calls == 0)
-  {
-    init_menu_evt_t(tab);
-    calls = 1;
-  }
-  while (sfRenderWindow_pollEvent(window->window, &event))
-  {
-    i = 0;
-    while (i < FCTIONS)
-    {
-      if (event.type == tab[i].type)
-	tab[i].fction(window, &event, misc);
-      ++i;
-    }
-  }
-  return (0);
-}
-
 static int		add_buttons(sfbutton_t ***buttons, sprite_t **sprites)
 {
   sfbutton_t		*new;
@@ -93,14 +68,16 @@ static void		display(window_t *window, player_t *player, menu_t *misc)
 int			game_menu(window_t *window, player_t *player)
 {
   menu_t		misc;
+  evtptr_t		tab[FCTIONS];
 
   if (init_menu(&misc, player) == -1)
     return (-1);
+  init_menu_evt_t(tab);
   while (sfRenderWindow_isOpen(window->window)
     && misc.leave == false)
   {
     window_clear(window);
-    game_menu_poll_event(window, &misc);
+    ptr_pollevent(window, tab, FCTIONS, &misc);
     display(window, player, &misc);
     window_refresh(window);
   }
