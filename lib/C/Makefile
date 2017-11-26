@@ -11,8 +11,6 @@ CC	= gcc
 
 MAKE	= make -C
 
-USE_CSFML :=y
-
 SRCS	= libcatalloc.a
 SRCS	+= libdefault.a
 SRCS	+= libgetlineshell.a

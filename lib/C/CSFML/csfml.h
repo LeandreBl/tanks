@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 13:58:23 2017 Léandre Blanchard
-** Last update Sat Nov 18 18:35:43 2017 Léandre Blanchard
+** Last update Mon Nov 27 00:27:31 2017 Léandre Blanchard
 */
 
 #ifndef MY_CSFML_H_
@@ -66,6 +66,15 @@ struct			window_s
   struct sprite_s      	*frame;
 };
 
+typedef int (* evt_t)(struct window_s *window,
+		      sfEvent *event, void *data);
+
+struct			evtptr_s
+{
+  sfEventType		type;
+  evt_t			fction;
+};
+
 struct			sfbutton_s
 {
   struct sprite_s	*sprite;
@@ -78,6 +87,7 @@ struct			sfbutton_s
 typedef struct window_s window_t;
 typedef struct sprite_s sprite_t;
 typedef struct sfbutton_s sfbutton_t;
+typedef struct evtptr_s evtptr_t;
 
 sfIntRect	simple_int_rect(int x, int y, int width, int height);
 
@@ -174,6 +184,14 @@ int		sfbutton_exec(sfbutton_t *button, sfVector2i pos, void *data);
 void		free_sfbutton(sfbutton_t *button);
 
 void		free_sfbuttons(sfbutton_t **buttons);
+
+int		ptr_pollevent(window_t *window, evtptr_t tab[],
+			      int size, void *data);
+
+void		add_evt(evtptr_t *index, int type, evt_t fction_ptr);
+
+int		button_poll_event(window_t *window, sfEvent *event,
+				  sfbutton_t **buttons, void *data);
 
 #ifdef __cplusplus
 }

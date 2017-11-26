@@ -9,30 +9,6 @@
 
 #define FCTIONS		(3)
 
-static void		log_poll_evt(window_t *window, player_t *player)
-{
-  static bool		calls = false;
-  static evtptr_t	tab[FCTIONS];
-  sfEvent		event;
-  int			i;
-
-  if (calls == false)
-  {
-    init_login_evt_t(tab);
-    calls = true;
-  }
-  while (sfRenderWindow_pollEvent(window->window, &event))
-  {
-    i = 0;
-    while (i < FCTIONS)
-    {
-      if (event.type == tab[i].type)
-	tab[i].fction(window, &event, player);
-      ++i;
-    }
-  }
-}
-
 static void		display(window_t *window, player_t *player, sprite_t **sprites)
 {
   sfVector2f		pos;
@@ -64,14 +40,16 @@ static void		init_players_values(player_t *player)
 int			login(window_t *window, player_t *player)
 {
   sprite_t		**sprites;
+  evtptr_t		tab[FCTIONS];
 
   init_players_values(player);
   if (init_sprites(&sprites, "-login.png") == -1)
     return (-1);
+  init_login_evt_t(tab);
   while (sfRenderWindow_isOpen(window->window))
   {
     window_clear(window);
-    log_poll_evt(window, player);
+    ptr_pollevent(window, tab, FCTIONS, player);
     display(window, player, sprites);
     window_refresh(window);
   }

@@ -23,30 +23,6 @@ static void		free_maps(map_t **maps)
   sfree(&maps);
 }
 
-static void		solo_poll_event(solo_t *game)
-{
-  static bool		calls = false;
-  static evtptr_t	tab[FCTIONS];
-  sfEvent		event;
-  int			i;
-
-  if (calls == false)
-  {
-    init_solo_evt_t(tab);
-    calls = true;
-  }
-  while (sfRenderWindow_pollEvent(game->window->window, &event))
-  {
-    i = 0;
-    while (i < FCTIONS)
-    {
-      if (event.type == tab[i].type)
-	tab[i].fction(game->window, &event, game);
-      ++i;
-    }
-  }
-}
-
 static int		fill(solo_t *game, game_t *data, tank_t ***tanks)
 {
   if (load_game_maps(&game->maps) == -1)
@@ -64,17 +40,19 @@ static int		fill(solo_t *game, game_t *data, tank_t ***tanks)
 
 int			solo(game_t *data)
 {
+  evtptr_t		tab[FCTIONS];
   solo_t		game;
   tank_t		**tanks;
 
+  
   if (fill(&game, data, &tanks) == -1)
     return (-1);
-  
+  init_solo_evt_t(tab);
   while (sfRenderWindow_isOpen(game.window->window)
 	 && game.leave == false)
   {
     window_clear(game.window);
-    solo_poll_event(&game);
+    ptr_pollevent(game.window, tab, FCTIONS, &game);
     window_refresh(game.window);
   }
   free_tanks(tanks);

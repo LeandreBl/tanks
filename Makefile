@@ -44,15 +44,18 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(MAKE) lib/C
+	$(MAKE) lib/C/CSFML
 	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LIB)
 	@       tput setaf 2; cat include/signature; tput sgr0
 
 clean:
 	$(MAKE) lib/C clean
+	$(MAKE) lib/C/CSFML
 	$(RM) $(OBJ)
 
 fclean: clean
 	$(MAKE) lib/C fclean
+	$(MAKE) lib/C/CSFML
 	$(RM) $(NAME)
 
 re: fclean all

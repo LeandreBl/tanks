@@ -32,6 +32,7 @@ SRCS	+= thread.c
 SRCS	+= xy_vect.c
 SRCS	+= distance.c
 SRCS	+= button.c
+SRCS	+= poll_event.c
 
 OBJS	= $(SRCS:.c=.o)
 

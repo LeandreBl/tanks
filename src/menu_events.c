@@ -11,20 +11,11 @@ int		buttons_events(window_t *window, sfEvent *event, void *data)
 {
   game_t	block;
   menu_t	*misc;
-  sfVector2i	mouse;
-  int		i;
 
-  i = 0;
   misc = (menu_t *)data;
   block.window = window;
   block.misc = misc;
-  mouse = xy_vectori(event->mouseButton.x, event->mouseButton.y);
-  while (misc->buttons && misc->buttons[i] != NULL)
-  {
-    sfbutton_exec(misc->buttons[i], mouse, &block);
-    ++i;
-  }
-  return (0);
+  return (button_poll_event(window, event, misc->buttons, &block));
 }
 
 int		menu_evt_close(window_t *window, sfEvent *event, void *data)
