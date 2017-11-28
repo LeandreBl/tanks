@@ -41,6 +41,7 @@ extern "C" {
 */
 struct			sprite_s
 {
+  char			*name;
   sfSprite              *sprite;
   sfTexture             *texture;
 };
@@ -192,6 +193,14 @@ void		add_evt(evtptr_t *index, int type, evt_t fction_ptr);
 
 int		button_poll_event(window_t *window, sfEvent *event,
 				  sfbutton_t **buttons, void *data);
+
+void		sfbutton_draw_name_all(window_t *window, sfbutton_t **buttons,
+			   sfColor color);
+
+void		sfbutton_draw_all(window_t *window, sfbutton_t **buttons);
+
+sfbutton_t	*button_by_name(sfbutton_t **buttons, const char *name);
+sprite_t	*sprite_by_name(sprite_t **sprites, const char *name);
 
 #ifdef __cplusplus
 }

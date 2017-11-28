@@ -37,6 +37,9 @@ static map_t	*add_map(const char *pathname)
     return (NULL);
   map->map = load_file(pathname);
   map->ennemies = nb_ennemies(map->map);
+  map->name = my_strdup(pathname);
+  while (nb_of(map->name, '/') != 0)
+    shift_left(map->name, 1);
   return (map);
 }
 

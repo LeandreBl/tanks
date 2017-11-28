@@ -29,6 +29,7 @@ int	game_menu(window_t *window, player_t *player);
 void	init_menu_evt_t(evtptr_t tab[]);
 void	init_solo_evt_t(evtptr_t tab[]);
 void	init_login_evt_t(evtptr_t tab[]);
+void	init_solo_choice_t(evtptr_t tab[]);
 int	solo(game_t *ptr);
 int	load_game_maps(map_t ***maps);
 void	free_tank(tank_t *tank);
@@ -53,12 +54,20 @@ int	menu_button_coop(void *data);
 int	menu_button_multi(void *data);
 int	menu_button_back(void *data);
 
-/* solo pollEvent fctions */
+/* solo ingame pollEvent fctions */
 int	solo_evt_close(window_t *window, sfEvent *event, void *data);
 int	solo_evt_leave(window_t *window, sfEvent *event, void *data);
 int	solo_move_up(window_t *window, sfEvent *event, void *data);
 int	solo_move_down(window_t *window, sfEvent *event, void *data);
 int	solo_move_left(window_t *window, sfEvent *event, void *data);
 int	solo_move_right(window_t *window, sfEvent *event, void *data);
+
+/* solo choice map pollEvent fctions */
+int	solo_choice_close(window_t *window, sfEvent *event, void *data);
+int	solo_choice_back(window_t *window, sfEvent *event, void *data);
+int	menu_choice_buttons(window_t *window, sfEvent *event, void *data);
+int	solo_scroll_button(window_t *window, sfEvent *event, void *data);
+
+/* solo choice buttons fctions */
 
 #endif /* !TANKS_H_ */

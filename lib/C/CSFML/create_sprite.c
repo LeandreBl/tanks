@@ -41,6 +41,9 @@ sprite_t		*create_sprite_rect(const char *pathname,
     return (NULL);
   }
   sfSprite_setTexture(sprite->sprite, sprite->texture, sfTrue);
+  sprite->name = my_strdup(pathname);
+  while (nb_of(sprite->name, '/') != 0)
+    shift_left(sprite->name, 1);
   return (sprite);
 }
 

@@ -33,6 +33,8 @@ SRCS	+= xy_vect.c
 SRCS	+= distance.c
 SRCS	+= button.c
 SRCS	+= poll_event.c
+SRCS	+= button_display.c
+SRCS	+= find_by_name.c
 
 OBJS	= $(SRCS:.c=.o)
 

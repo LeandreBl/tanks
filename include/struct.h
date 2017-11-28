@@ -58,6 +58,7 @@ typedef struct	game_s
 typedef struct	map_s
 {
   int		ennemies;
+  char		*name;
   char		**map;
 }		map_t;
 
@@ -69,6 +70,7 @@ typedef struct	solo_s
   menu_t	*misc;
   window_t	*window;
   bool		leave;
+  float		offset;
 }		solo_t;
 
 #endif /* !STRUCT_H_ */

@@ -21,8 +21,7 @@ int		button_poll_event(window_t *window, sfEvent *event, sfbutton_t **buttons,
   coord = xy_vectori(event->mouseButton.x, event->mouseButton.y);
   while (buttons != NULL && buttons[i] != NULL)
   {
-    if (sfbutton_exec(buttons[i], coord, data) == -1)
-      return (-1);
+    sfbutton_exec(buttons[i], coord, data);
     ++i;
   }
   return (0);
