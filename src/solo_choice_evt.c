@@ -46,9 +46,9 @@ int		solo_scroll_button(window_t *window, sfEvent *event, void *data)
   if (press == true)
   {
     if (event->type == sfEvtMouseButtonPressed)
-      scroll->pos.y += event->mouseButton.y - from;
+      scroll->pos.y += (event->mouseButton.y - from - scroll->pos.y);
     if (event->type == sfEvtMouseMoved)
-      scroll->pos.y += event->mouseMove.y - from;
+      scroll->pos.y += (event->mouseMove.y - from - scroll->pos.y);
     solo->offset = scroll->pos.y;
   }
   return (0);
