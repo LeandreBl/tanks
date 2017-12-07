@@ -31,12 +31,12 @@ int		solo_scroll(window_t *window, sfEvent *event, void *data)
   solo_t	*solo;
   double	value;
 
-  (void) window;
   solo = (solo_t *)data;
   value = (double)event->mouseWheelScroll.delta / 2;
-  if (solo->offset - value >= 0 &&
-      (50.0 * (solo->offset - value) + (tablen(solo->buttons)) * 110) < 650)
-    solo->offset -= value;
+  if (solo->offset + value <= 0
+      && (50 + (50.0 * (solo->offset + value) + (tablen(solo->buttons) - 1)
+		* 110)) >= window->height - 160)
+    solo->offset += value;
   return (0);
 }
 
