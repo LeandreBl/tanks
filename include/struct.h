@@ -70,7 +70,7 @@ typedef struct	solo_s
   menu_t	*misc;
   window_t	*window;
   bool		leave;
-  float		offset;
+  double	offset;
 }		solo_t;
 
 #endif /* !STRUCT_H_ */

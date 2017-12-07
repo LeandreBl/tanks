@@ -37,6 +37,5 @@ void		init_solo_choice_t(evtptr_t tab[])
   add_evt(&tab[0], sfEvtClosed, solo_choice_close);
   add_evt(&tab[1], sfEvtKeyPressed, solo_choice_back);
   add_evt(&tab[2], sfEvtMouseButtonPressed, menu_choice_buttons);
-  add_evt(&tab[3], sfEvtMouseMoved, solo_scroll_button);
-  add_evt(&tab[4], sfEvtMouseButtonReleased, solo_scroll_button);
+  add_evt(&tab[3], sfEvtMouseWheelScrolled, solo_scroll);
 }

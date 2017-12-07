@@ -66,7 +66,7 @@ int	solo_move_right(window_t *window, sfEvent *event, void *data);
 int	solo_choice_close(window_t *window, sfEvent *event, void *data);
 int	solo_choice_back(window_t *window, sfEvent *event, void *data);
 int	menu_choice_buttons(window_t *window, sfEvent *event, void *data);
-int	solo_scroll_button(window_t *window, sfEvent *event, void *data);
+int	solo_scroll(window_t *window, sfEvent *event, void *data);
 
 /* solo choice buttons fctions */
 

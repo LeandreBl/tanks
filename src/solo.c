@@ -7,7 +7,7 @@
 
 #include "tanks.h"
 
-# define FCTIONS (5)
+# define FCTIONS (4)
 
 static void		free_maps(map_t **maps)
 {
@@ -28,7 +28,6 @@ static int		init_buttons(solo_t *solo)
 {
   int			i;
   sfbutton_t		*new;
-  sprite_t		*scroll;
 
   i = 0;
   solo->buttons = NULL;
@@ -41,9 +40,6 @@ static int		init_buttons(solo_t *solo)
       return (-1);
     ++i;
   }
-  scroll = sprite_by_name(solo->sprites, "scroll-solo-choice.png");
-  new = sfbutton_create("scroll", scroll, xy_vectorf(800, 50), NULL);
-  solo->buttons = tab_append(solo->buttons, new);
   if (solo->buttons == NULL || new == NULL)
     return (-1);
   return (0);
@@ -67,8 +63,17 @@ static int		fill(solo_t *solo, game_t *data, tank_t ***tanks)
 
 static void		display(solo_t *solo)
 {
-  //put_sprite(solo->window, solo->sprites[1], ORIGIN);
-  sfbutton_draw_name_all(solo->window, solo->buttons, sfBlack);
+  int			i;
+  sfVector2f		pos;
+
+  i = 0;
+  pos.x = 50;
+  while (solo->buttons[i] != NULL)
+  {
+    pos.y = 50 + (50.0 * solo->offset) + (i * 110);
+    sfbutton_draw_name(solo->window, solo->buttons[i], pos, sfBlack);
+    ++i;
+  }
 }
 
 int			solo(game_t *data)
