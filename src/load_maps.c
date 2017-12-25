@@ -51,7 +51,7 @@ static int	fill(map_t ***maps, char **filenames)
   i = 0;
   while (filenames[i] != NULL)
   {
-    if (end_with(filenames[i], ".tnk") == 0)
+    if (end_with(filenames[i], ".tnk") == true)
     {
       pathname = catalloc("maps/%s", filenames[i]);
       if (pathname == NULL)

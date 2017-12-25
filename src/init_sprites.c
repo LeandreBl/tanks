@@ -17,7 +17,7 @@ static int	add_each_sprite(sprite_t ***sprites, char **files,
   i = 0;
   while (files[i] != NULL)
   {
-    if (end_with(files[i], endwith) == 0)
+    if (end_with(files[i], endwith) == true)
     {
       pathname = catalloc("sprites/%s", files[i]);
       new = create_sprite(pathname);

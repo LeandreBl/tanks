@@ -90,6 +90,9 @@ typedef struct sprite_s sprite_t;
 typedef struct sfbutton_s sfbutton_t;
 typedef struct evtptr_s evtptr_t;
 
+int		load_script(const char *pathname, const char *script,
+			    sprite_t ***ptr);
+
 sfIntRect	simple_int_rect(int x, int y, int width, int height);
 
 void		my_draw_line(window_t *window, sfVector2f from,

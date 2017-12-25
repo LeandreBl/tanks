@@ -11,10 +11,13 @@ CC	= gcc
 
 MAKE	= make -C
 
+USE_CSFML := y
+
 SRCS	= libcatalloc.a
 SRCS	+= libdefault.a
 SRCS	+= libgetlineshell.a
 SRCS	+= libgnl.a
+SRCS	+= libmy_malloc.a
 SRCS	+= libprintf.a
 ifdef USE_CSFML
 SRCS	+= libmy_csfml.a
@@ -30,6 +33,7 @@ $(NAME):
 	$(MAKE) default
 	$(MAKE) getline_shell
 	$(MAKE) get_next_line
+	$(MAKE) malloc
 ifdef USE_CSFML
 	$(MAKE) CSFML
 endif
@@ -40,6 +44,7 @@ clean:
 	$(MAKE) default clean
 	$(MAKE) getline_shell clean
 	$(MAKE) get_next_line clean
+	$(MAKE) malloc clean
 ifdef USE_CSFML
 	$(MAKE) CSFML clean
 endif
