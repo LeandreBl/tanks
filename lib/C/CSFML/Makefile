@@ -35,6 +35,7 @@ SRCS	+= button.c
 SRCS	+= poll_event.c
 SRCS	+= button_display.c
 SRCS	+= find_by_name.c
+SRCS	+= load_script.c
 
 OBJS	= $(SRCS:.c=.o)
 
