@@ -5,7 +5,7 @@
 ** Login   <lblanchard@epitech.net>
 ** 
 ** Started on  Thu Oct 13 09:19:01 2016 Leandre Blanchard
-** Last update Mon Dec 25 02:04:47 2017 Léandre Blanchard
+** Last update Sun Dec 31 20:49:36 2017 Léandre Blanchard
 */
 
 #ifndef MY_H_
@@ -20,6 +20,26 @@ extern "C" {
 #endif
 # include <stddef.h>
 # include <stdbool.h>
+# include <stdint.h>
+
+/*
+** Return a server socket on port <port>
+** Returns -1 on error
+*/
+int	create_server(uint16_t port);
+
+/*
+** Return a socket when a new client is connected, <sockfd> is the server fd
+** <backlog> argument defines the length of the kernel pending queue
+** Returns -1 on error
+*/
+int	accept_client(int sockfd, int backlog);
+
+/*
+** Try to connect to the server <ip> on <port> and return a client socket
+** Return -1 on error
+*/
+int	connect_to(const char *ip, uint16_t port);
 
 /* swap the inside of both values swap(&i, &j) */
 void	swap(void *a, void *b);
@@ -29,7 +49,7 @@ void	my_memset(void *ptr, int value, size_t size);
 
 /*
 ** Isacmd returns 1 if the cmd exist in $PATH
-** return 0 if not or on error
+** return 0 otherwise
 */
 int	isacmd(const char *str);
 
@@ -132,6 +152,14 @@ int	my_dprintf(int fd, const char *format, ...);
 ** Returns NULL on error
 */
 char	*catalloc(const char *format, ...);
+
+/*
+** scatalloc store the result in dest, if dest is NULL, it uses catalloc and returns 
+** a pointer to the new allocated string.
+** if dest is a valid pointer, this function return dest
+** Returns NULL on error
+*/
+char	*scatalloc(char *dest, const char *format, ...);
 
 /* 
 ** Sort the given [tab] in ascending order using strcmp
@@ -370,7 +398,7 @@ int	total_name(const char *);
 /*
 ** Man 3 bzero
 */
-int	zeros(char *, int);
+int	zeros(void *ptr, size_t size);
 
 void	my_putchar(char);
 
@@ -381,6 +409,7 @@ int	my_putstr(const char *);
 /* NULL proof strlen, returns 0 if argument is NULL */
 size_t	my_strlen(const char *str);
 size_t	my_kstrlen(const char *str, char k);
+size_t	my_knstrlen(const char *str, char k, size_t n);
 
 /* man atoi */
 int	my_getnbr(const char *);

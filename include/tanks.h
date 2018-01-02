@@ -49,10 +49,10 @@ int	menu_evt_move(window_t *window, sfEvent *event, void *data);
 int	menu_evt_escape(window_t *window, sfEvent *event, void *data);
 
 /* game menu buttons fctions */
-int	menu_button_solo(void *data);
-int	menu_button_coop(void *data);
-int	menu_button_multi(void *data);
-int	menu_button_back(void *data);
+int	menu_button_solo(void *data, sfbutton_t *this);
+int	menu_button_coop(void *data, sfbutton_t *this);
+int	menu_button_multi(void *data, sfbutton_t *this);
+int	menu_button_back(void *data, sfbutton_t *this);
 
 /* solo ingame pollEvent fctions */
 int	solo_evt_close(window_t *window, sfEvent *event, void *data);

@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 13:58:23 2017 Léandre Blanchard
-** Last update Mon Nov 27 00:27:31 2017 Léandre Blanchard
+** Last update Mon Dec 25 19:29:36 2017 Léandre Blanchard
 */
 
 #ifndef MY_CSFML_H_
@@ -82,13 +82,16 @@ struct			sfbutton_s
   char			*name;
   sfVector2f		pos;
   sfVector2f		size;
-  int			(*fction)(void *data);
+  int			(*fction)(void *data, struct sfbutton_s *this);
 };
 
 typedef struct window_s window_t;
 typedef struct sprite_s sprite_t;
 typedef struct sfbutton_s sfbutton_t;
 typedef struct evtptr_s evtptr_t;
+
+int		load_script(const char *pathname, const char *script,
+			    sprite_t ***ptr);
 
 sfIntRect	simple_int_rect(int x, int y, int width, int height);
 
@@ -173,7 +176,7 @@ double		distance(sfVector2f a, sfVector2f b);
 
 sfbutton_t	*sfbutton_create(const char *name, sprite_t *sprite,
 				 sfVector2f pos,
-				 int (*fction)(void *data));
+				 int (*fction)(void *data, sfbutton_t *this));
 int		sfbutton_ispressed(sfbutton_t *button, sfVector2i pos);
 
 void		sfbutton_draw(window_t *window, sfbutton_t *button, sfVector2f pos);
